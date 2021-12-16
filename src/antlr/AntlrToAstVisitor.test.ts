@@ -156,7 +156,7 @@ describe("AntlrToAstVisitor", () => {
             }
         }
 
-        it.each(ruleDefinitionTestCases)("with input `%s` should return RuleDefinitionNode with isMod %s, isAsync %s, identifier foo, event bar, event argument %s and body with statement foobar", (source, expectedIsMod, expectedIsAsync, expectedIdentifier, expectedEventArgument) => {
+        it.each(ruleDefinitionTestCases)("with input `%s` should return RuleDefinitionNode with isMod %s, isAsync %s, identifier %s, event bar, event argument %s and body with statement foobar", (source, expectedIsMod, expectedIsAsync, expectedIdentifier, expectedEventArgument) => {
             const parser = getParserFor(source);
             const ctx = parser.ruleDefinition();
 
