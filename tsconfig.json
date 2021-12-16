@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "strict": true,
+    "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitOverride": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "sourceMap": true,
+    "moduleResolution": "Node",
+    "importsNotUsedAsValues": "error",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "lib": [
+      "ESNext"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ]
+}

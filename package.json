@@ -1,0 +1,50 @@
+{
+  "name": "portal-toolbox-language",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "yarn@3.1.1",
+  "scripts": {
+    "build": "yarn tsc --noEmit && yarn webpack",
+    "build-development": "cross-env NODE_ENV=development build",
+    "run": "yarn run build && node ./dist/index.js",
+    "run-development": "yarn run build-development && node ./dist/index.js",
+    "regenerate-and-run": "yarn run generate-parser-antlr && yarn run run-development",
+    "antlr4": "java -jar antlr-4.9.3-complete.jar",
+    "generate-parser": "yarn run antlr4 -Dlanguage=JavaScript -o src/antlr/ -visitor PortalToolboxLanguage.g4",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "lint": "eslint ./src/ --ext .ts,.tsx --max-warnings 0",
+    "update-dependencies": "yarn upgrade-interactive"
+  },
+  "dependencies": {
+    "antlr4": "4.9.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "@types/antlr4": "^4.7.2",
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.12",
+    "@typescript-eslint/eslint-plugin": "^5.6.0",
+    "@typescript-eslint/parser": "^5.6.0",
+    "babel-jest": "^27.4.4",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.4.1",
+    "jest": "^27.4.4",
+    "ts-jest": "^27.1.1",
+    "ts-loader": "^9.2.6",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.3",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  },
+  "dependenciesMeta": {
+    "eslint@8.4.1": {
+      "unplugged": true
+    },
+    "ts-jest@27.1.0": {
+      "unplugged": true
+    }
+  }
+}

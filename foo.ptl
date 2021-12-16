@@ -1,0 +1,47 @@
+using global_stack_var for stack
+using global_helper_var for helper
+
+global global_foo: Number = 0
+
+global {
+    global_foo: Number = 0
+}
+
+player player_foo: Number
+team team_foo: Number
+
+var stackGlobalVar: String[] = ["Hello", ", ", "World!"]
+
+mod {
+    BaseRules
+    `My Rule`
+    rule on OnPlayerDeployed { ... }
+}
+
+mod rule `My Rule` on OnPlayerDeployed {
+    uses { EventPlayer as player }
+
+    conditions {
+        player.isAlive
+        EventPlayer.GetPlayerState(PlayerStateBool.IsAlive)
+    }
+
+    actions {
+        EventPlayer.player_foo = 0
+    }
+}
+
+async rule StartupLoop on Ongoing(Global) {
+    condition true
+    condition false
+
+    while (true) {
+        await Wait(1)
+    }
+}
+
+sub MySubroutine(x: Number, y: Number): Number {
+    uses { EventPlayer }
+
+    return x + y
+}
