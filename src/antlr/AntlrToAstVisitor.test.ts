@@ -263,7 +263,7 @@ describe("AntlrToAstVisitor", () => {
     // body tests
 
     describe("visitBody", () => {
-        it("with input `%s` should return BodyNode with conditions, condition and actions blocks, and statement foobar", () => {
+        it("with input `{ actions { baz } conditions { foo } condition bar; foobar; }` should return BodyNode with conditions, condition and actions blocks, and statement foobar", () => {
             const parser = getParserFor("{ actions { baz } conditions { foo } condition bar; foobar; }");
             const ctx = parser.body();
 
