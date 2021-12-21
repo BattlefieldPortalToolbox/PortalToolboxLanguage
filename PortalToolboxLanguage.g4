@@ -4,7 +4,7 @@ grammar PortalToolboxLanguage;
 
 code : (variableDeclaration | subroutineDefinition | ruleDefinition | modDefinition)* EOF ;
 
-// mod rule
+// mod definition rule
 
 modDefinition : MOD modIdentifier=identifier? '{' (ruleIdentifier+=identifier ';'? | ruleDefinition)* '}' ;
 
@@ -187,5 +187,7 @@ WS : [ \t\r\n]+ -> skip ;
 
 // Make the tokenizer never throw errors, by simply consuming invalid tokens as unknown,
 // which will throw a parser error, which are easier to deal with.
+
+// TODO: use .+? to group as many invalid tokens as possible
 
 UNKNWON : . ;
