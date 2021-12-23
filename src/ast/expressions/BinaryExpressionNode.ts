@@ -1,4 +1,6 @@
 import { ExpressionNode } from "./ExpressionNode";
+import type { Node } from "../Node";
+import type { NodeVisitor } from "../NodeVisitor";
 
 export enum BinaryOperator {
     Multiply = "*",
@@ -21,13 +23,21 @@ export enum BinaryOperator {
 
 export class BinaryExpressionNode extends ExpressionNode {
     public left: ExpressionNode;
-    public right: ExpressionNode;
     public operator: BinaryOperator;
+    public right: ExpressionNode;
 
-    constructor(left: ExpressionNode, right: ExpressionNode, operator: BinaryOperator) {
+    override get children(): readonly Node[] {
+        return [this.left, this.right];
+    }
+
+    constructor(left: ExpressionNode, operator: BinaryOperator, right: ExpressionNode) {
         super();
         this.left = left;
-        this.right = right;
         this.operator = operator;
+        this.right = right;
+    }
+
+    override accept<T>(visitor: NodeVisitor<T>): T {
+        return visitor.visitBinaryExpression(this);
     }
 }

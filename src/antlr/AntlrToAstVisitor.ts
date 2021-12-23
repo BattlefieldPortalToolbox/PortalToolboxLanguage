@@ -355,10 +355,10 @@ export class AntlrToAstVisitor extends PortalToolboxLanguageVisitor<Node> {
     }
 
     override visitUnaryExpression(ctx: UnaryExpressionContext): UnaryExpressionNode {
-        const expression = this.visitExpression(ctx.expression());
         const operator = (ctx.op as Token).text as UnaryOperator;
+        const expression = this.visitExpression(ctx.expression());
 
-        return AntlrToAstVisitor.setLocation(new UnaryExpressionNode(expression, operator), ctx);
+        return AntlrToAstVisitor.setLocation(new UnaryExpressionNode(operator, expression), ctx);
     }
 
     override visitCastExpression(ctx: CastExpressionContext): CastExpressionNode {
@@ -370,10 +370,10 @@ export class AntlrToAstVisitor extends PortalToolboxLanguageVisitor<Node> {
 
     override visitBinaryExpression(ctx: BinaryExpressionContext): BinaryExpressionNode {
         const left = this.visitExpression(ctx.left);
-        const right = this.visitExpression(ctx.right);
         const op = (ctx.op as Token).text as BinaryOperator;
+        const right = this.visitExpression(ctx.right);
 
-        return AntlrToAstVisitor.setLocation(new BinaryExpressionNode(left, right, op), ctx);
+        return AntlrToAstVisitor.setLocation(new BinaryExpressionNode(left, op, right), ctx);
     }
 
     override visitTernaryExpression(ctx: TernaryExpressionContext): TernaryExpressionNode {

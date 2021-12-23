@@ -15,3 +15,4 @@ export * from "./VariableDeclarationNode";
 export * from "./VariableDeclarationWithoutSpecifierNode";
 
 export * from "./ISourceLocation";
+export * from "./NodeVisitor";

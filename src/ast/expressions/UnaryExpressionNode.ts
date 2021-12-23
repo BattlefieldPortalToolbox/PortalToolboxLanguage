@@ -1,4 +1,6 @@
 import { ExpressionNode } from "./ExpressionNode";
+import type { Node } from "../Node";
+import type { NodeVisitor } from "../NodeVisitor";
 
 export enum UnaryOperator {
     Negative = "-",
@@ -6,12 +8,20 @@ export enum UnaryOperator {
 }
 
 export class UnaryExpressionNode extends ExpressionNode {
-    public expression: ExpressionNode;
     public operator: UnaryOperator;
+    public expression: ExpressionNode;
 
-    constructor(expression: ExpressionNode, operator: UnaryOperator) {
+    override get children(): readonly Node[] {
+        return [this.expression];
+    }
+
+    constructor(operator: UnaryOperator, expression: ExpressionNode) {
         super();
-        this.expression = expression;
         this.operator = operator;
+        this.expression = expression;
+    }
+
+    override accept<T>(visitor: NodeVisitor<T>): T {
+        return visitor.visitUnaryExpression(this);
     }
 }
