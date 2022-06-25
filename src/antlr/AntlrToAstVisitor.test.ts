@@ -1,7 +1,7 @@
 import { AntlrToAstVisitor } from "./AntlrToAstVisitor";
 import PortalToolboxLanguageParser from "./PortalToolboxLanguageParser";
 import PortalToolboxLanguageLexer from "./PortalToolboxLanguageLexer";
-import { CommonTokenStream, InputStream } from "antlr4";
+import antlr4 from "antlr4";
 import type {
     ArrayLiteralContext,
     ArrayTypeExpressionContext,
@@ -59,9 +59,9 @@ import {
 } from "../ast";
 
 function getParserFor(source: string): PortalToolboxLanguageParser {
-    const inputStream = new InputStream(source);
+    const inputStream = new antlr4.InputStream(source);
     const lexer = new PortalToolboxLanguageLexer(inputStream);
-    const tokenStream = new CommonTokenStream(lexer);
+    const tokenStream = new antlr4.CommonTokenStream(lexer);
 
     return new PortalToolboxLanguageParser(tokenStream);
 }

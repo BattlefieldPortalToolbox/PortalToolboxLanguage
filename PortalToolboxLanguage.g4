@@ -59,7 +59,7 @@ expression : expression callArguments # CallExpression
            | expression '[' expression ']' # IndexExpression
            | AWAIT expression # AwaitExpression
            | op=('!' | '-') expression # UnaryExpression
-           | expression 'as' typeExpression # CastExpression
+           | expression AS typeExpression # CastExpression
            | left=expression op=('*' | '/') right=expression # BinaryExpression
            | left=expression op=('+' | '-') right=expression # BinaryExpression
            | left=expression op=('<' | '<=' | '>=' | '>') right=expression # BinaryExpression
@@ -124,6 +124,8 @@ literal : '[' (expression (',' expression)* ','?)? ']' # ArrayLiteral
 // tokens
 
 ACTIONS : 'actions' ;
+
+AS : 'as' ;
 
 ASYNC : 'async' ;
 

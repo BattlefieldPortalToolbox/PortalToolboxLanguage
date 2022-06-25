@@ -83,6 +83,7 @@ class FooLiteralNode extends LiteralNode {
     accept<T>(visitor: NodeVisitor<T>): T { throw new Error(""); }
 }
 
+// TODO: separate into individual *Node.test.ts files
 describe("Node.children", () => {
     type NodeChildrenTestCase = [(keyof typeof nodes)[], Node, Node[]];
 
