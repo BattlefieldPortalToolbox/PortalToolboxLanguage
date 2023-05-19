@@ -13,7 +13,8 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true,
     "lib": [
-      "ESNext"
+      "ESNext",
+      "dom"
     ]
   },
   "include": [

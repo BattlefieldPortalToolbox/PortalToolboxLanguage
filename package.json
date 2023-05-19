@@ -16,7 +16,8 @@
     "update-dependencies": "yarn upgrade-interactive"
   },
   "dependencies": {
-    "antlr4": "4.10.1"
+    "antlr4": "4.10.1",
+    "jsdom": "^20.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.18.2",
@@ -24,6 +25,7 @@
     "@babel/preset-env": "^7.18.2",
     "@types/antlr4": "^4.7.2",
     "@types/jest": "^28.1.1",
+    "@types/jsdom": "^16.2.14",
     "@types/node": "^17.0.41",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
